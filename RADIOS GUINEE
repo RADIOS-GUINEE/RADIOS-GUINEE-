@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<meta name="theme-color" content="#CC0000"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="description" content="Radios Guinée - Écoutez les meilleures radios guinéennes en direct"/>
+<title>RADIOS GUINÉE</title>
+<link rel="manifest" href="manifest.json"/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --rouge: #CC0000;
+    --jaune: #FFD700;
+    --vert: #009A44;
+    --noir: #0A0A0A;
+    --gris-fonce: #1A1A1A;
+    --gris-moyen: #2A2A2A;
+    --gris-clair: #3A3A3A;
+    --texte: #F0F0F0;
+    --texte-doux: #AAAAAA;
+    --accent: #FFD700;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--noir);
+    color: var(--texte);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    background: linear-gradient(135deg, #8B0000 0%, #CC0000 50%, #8B0000 100%);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(204,0,0,0.4);
+  }
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px 8px;
+  }
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-flag {
+    display: flex;
+    flex-direction: column;
+    width: 28px;
+    height: 20px;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  }
+  .flag-r { background: #CC0000; flex: 1; }
+  .flag-y { background: #FFD700; flex: 1; }
+  .flag-g { background: #009A44; flex: 1; }
+  .app-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .app-subtitle {
+    font-size: 10px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .lang-btn {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lang-btn:active { background: rgba(255,255,255,0.3); }
+
+  /* Search */
+  .search-bar {
+    padding: 0 16px 12px;
+  }
+  .search-input {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 25px;
+    padding: 10px 16px 10px 40px;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    outline: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='rgba(255,255,255,0.5)' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.099zm-5.44 1.406a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 14px center;
+  }
+  .search-input::placeholder { color: rgba(255,255,255,0.5); }
+
+  /* ===== PUB BANNER ===== */
+  .pub-banner {
+    background: linear-gradient(90deg, #1a1a1a, #2a2a2a);
+    border-bottom: 1px solid #333;
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--texte-doux);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .pub-label {
+    background: var(--jaune);
+    color: #000;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+  }
+  .pub-content { color: var(--texte-doux); font-size: 13px; }
+
+  /* ===== CATEGORIES ===== */
+  .categories {
+    padding: 14px 16px 6px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .categories::-webkit-scrollbar { display: none; }
+  .cat-btn {
+    background: var(--gris-moyen);
+    border: 1px solid #333;
+    color: var(--texte-doux);
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Nunito', sans-serif;
+  }
+  .cat-btn.active {
+    background: var(--rouge);
+    border-color: var(--rouge);
+    color: #fff;
+    box-shadow: 0 2px 12px rgba(204,0,0,0.4);
+  }
+
+  /* ===== SECTION TITLE ===== */
+  .section-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--texte-doux);
+    padding: 14px 16px 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #333;
+  }
+
+  /* ===== RADIO CARDS ===== */
+  .radio-list {
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 160px;
+  }
+
+  .radio-card {
+    background: var(--gris-moyen);
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  .radio-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--rouge);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .radio-card.playing {
+    background: linear-gradient(135deg, #1a0a0a, #2a1010);
+    border-color: rgba(204,0,0,0.4);
+    box-shadow: 0 4px 20px rgba(204,0,0,0.2);
+  }
+  .radio-card.playing::before { opacity: 1; }
+  .radio-card:active { transform: scale(0.98); }
+
+  .radio-logo {
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: var(--gris-clair);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .radio-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+  .logo-placeholder {
+    width: 54px; height: 54px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .radio-info { flex: 1; min-width: 0; }
+  .radio-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--texte);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .radio-desc {
+    font-size: 12px;
+    color: var(--texte-doux);
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .radio-freq {
+    font-size: 11px;
+    color: var(--jaune);
+    font-weight: 600;
+    margin-top: 3px;
+  }
+  .radio-cat {
+    display: inline-block;
+    background: rgba(255,255,255,0.07);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+    color: var(--texte-doux);
+    margin-top: 4px;
+  }
+
+  .radio-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .play-btn {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--rouge);
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 10px rgba(204,0,0,0.4);
+  }
+  .play-btn:active { transform: scale(0.9); }
+  .play-btn.playing {
+    background: var(--jaune);
+    color: #000;
+  }
+  .fav-btn {
+    background: none;
+    border: none;
+    color: var(--texte-doux);
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+    line-height: 1;
+  }
+  .fav-btn.active { color: #ff4444; }
+
+  /* ===== LIVE INDICATOR ===== */
+  .live-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: #4CAF50;
+    font-weight: 700;
+  }
+  .live-dot::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #4CAF50;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  /* ===== PLAYER BAR ===== */
+  .player-bar {
+    position: fixed;
+    bottom: 60px;
+    left: 0; right: 0;
+    background: linear-gradient(135deg, #1a0505, #2d0808);
+    border-top: 2px solid var(--rouge);
+    padding: 12px 16px;
+    z-index: 200;
+    display: none;
+    box-shadow: 0 -8px 30px rgba(204,0,0,0.3);
+  }
+  .player-bar.visible { display: block; }
+  .player-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .player-logo {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .player-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    flex: 1;
+  }
+  .player-status { font-size: 11px; color: var(--texte-doux); }
+  .player-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .ctrl-btn {
+    background: none;
+    border: none;
+    color: var(--texte-doux);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 4px;
+  }
+  .ctrl-btn:active { color: #fff; transform: scale(0.9); }
+  .main-play-btn {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--rouge);
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 20px rgba(204,0,0,0.5);
+    transition: all 0.2s;
+    margin: 0 8px;
+  }
+  .main-play-btn:active { transform: scale(0.9); }
+  .volume-slider {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    background: #444;
+    outline: none;
+  }
+  .volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--rouge);
+    cursor: pointer;
+  }
+  .loading-text {
+    font-size: 11px;
+    color: var(--jaune);
+    animation: blink 1s infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* ===== BOTTOM NAV ===== */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--gris-fonce);
+    border-top: 1px solid #333;
+    display: flex;
+    z-index: 300;
+  }
+  .nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    gap: 3px;
+  }
+  .nav-icon { font-size: 20px; line-height: 1; }
+  .nav-label { font-size: 10px; color: var(--texte-doux); font-weight: 600; }
+  .nav-item.active .nav-label { color: var(--rouge); }
+  .nav-item.active .nav-icon { filter: drop-shadow(0 0 4px var(--rouge)); }
+
+  /* ===== LANGUAGE MODAL ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 500;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-sheet {
+    background: var(--gris-fonce);
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+    width: 100%;
+    max-width: 480px;
+    animation: slideUp 0.3s ease;
+  }
+  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  .modal-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 16px;
+    color: var(--texte);
+  }
+  .lang-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px;
+    background: var(--gris-moyen);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lang-option:active { background: var(--gris-clair); }
+  .lang-option.selected { border: 2px solid var(--rouge); }
+  .lang-flag { font-size: 28px; }
+  .lang-name { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 600; }
+  .lang-native { font-size: 12px; color: var(--texte-doux); margin-top: 2px; }
+
+  /* ===== RTL support ===== */
+  [dir="rtl"] .radio-card::before { left: auto; right: 0; }
+  [dir="rtl"] .search-input {
+    background-position: calc(100% - 14px) center;
+    padding: 10px 40px 10px 16px;
+  }
+
+  /* ===== EMPTY / TABS ===== */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--texte-doux);
+  }
+  .empty-icon { font-size: 48px; margin-bottom: 12px; }
+  .empty-text { font-size: 14px; }
+
+  /* ===== ABOUT ===== */
+  .about-section {
+    padding: 20px 16px;
+    padding-bottom: 120px;
+  }
+  .about-card {
+    background: var(--gris-moyen);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+  .about-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    color: var(--rouge);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .about-card p { font-size: 13px; color: var(--texte-doux); line-height: 1.6; }
+
+  /* PUB interstitielle */
+  .pub-mid {
+    margin: 4px 16px 10px;
+    background: linear-gradient(135deg, #1a1a00, #2a2800);
+    border: 1px solid #444400;
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pub-mid-icon { font-size: 28px; }
+  .pub-mid-text { font-size: 12px; color: #cccc00; flex: 1; }
+  .pub-mid-cta {
+    background: var(--jaune);
+    color: #000;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-top">
+    <div class="logo-area">
+      <div class="logo-flag">
+        <div class="flag-r"></div>
+        <div class="flag-y"></div>
+        <div class="flag-g"></div>
+      </div>
+      <div>
+        <div class="app-title">RADIOS GUINÉE</div>
+        <div class="app-subtitle" id="app-subtitle">Écoutez en direct</div>
+      </div>
+    </div>
+    <button class="lang-btn" onclick="openLangModal()" id="lang-display">🇫🇷 FR</button>
+  </div>
+  <div class="search-bar">
+    <input type="search" class="search-input" id="searchInput" placeholder="Rechercher une radio..." oninput="filterRadios(this.value)"/>
+  </div>
+</header>
+
+<div class="pub-banner">
+  <span class="pub-label">PUB</span>
+  <span class="pub-content" id="pub-text">📢 Votre publicité ici — Contactez-nous pour annoncer</span>
+</div>
+
+<div class="categories" id="categories">
+  <button class="cat-btn active" onclick="filterCategory('all', this)" data-label-fr="Toutes" data-label-en="All" data-label-ar="الكل" data-label-nko="ߒߞߏ">Toutes</button>
+  <button class="cat-btn" onclick="filterCategory('generaliste', this)" data-label-fr="Généraliste" data-label-en="General" data-label-ar="عام" data-label-nko="ߝߊ߬ߙߊ߲ߝߊ߬ߙߊ߲">Généraliste</button>
+  <button class="cat-btn" onclick="filterCategory('musique', this)" data-label-fr="Musique" data-label-en="Music" data-label-ar="موسيقى" data-label-nko="ߘߣߊ߬ߡߊ">Musique</button>
+  <button class="cat-btn" onclick="filterCategory('info', this)" data-label-fr="Info" data-label-en="News" data-label-ar="أخبار" data-label-nko="ߞߐߜߍ">Info</button>
+  <button class="cat-btn" onclick="filterCategory('religion', this)" data-label-fr="Religion" data-label-en="Religion" data-label-ar="دين" data-label-nko="ߌߛߌ߬ߟߊ߬ߡߊ">Religion</button>
+  <button class="cat-btn" onclick="filterCategory('regional', this)" data-label-fr="Régionale" data-label-en="Regional" data-label-ar="محلي" data-label-nko="ߝߊ߬ߛߏ">Régionale</button>
+</div>
+
+<div id="tab-home" class="tab-content active">
+  <div class="section-title" id="section-radios">📻 Radios en direct</div>
+  <div class="radio-list" id="radio-list">
+     <div class="empty-state"><div class="loading-text">Chargement des stations guinéennes...</div></div>
+  </div>
+</div>
+
+<div id="tab-favs" class="tab-content">
+  <div class="section-title">❤️ <span id="fav-title">Mes Favoris</span></div>
+  <div class="radio-list" id="fav-list">
+    <div class="empty-state">
+      <div class="empty-icon">💔</div>
+      <div class="empty-text" id="empty-fav-text">Aucun favori ajouté</div>
+    </div>
+  </div>
+</div>
+
+<div id="tab-podcasts" class="tab-content">
+  <div class="section-title">🎙️ <span id="podcast-title">Podcasts</span></div>
+  <div class="pub-mid">
+    <div class="pub-mid-icon">📱</div>
+    <div class="pub-mid-text" id="pub-mid-text">Annoncez votre produit ici !</div>
+    <div class="pub-mid-cta" id="pub-cta">Contacter</div>
+  </div>
+  <div class="radio-list" id="podcast-list">
+    <div class="empty-state">
+      <div class="empty-icon">🎙️</div>
+      <div class="empty-text" id="empty-pod-text">Podcasts bientôt disponibles</div>
+    </div>
+  </div>
+</div>
+
+<div id="tab-about" class="tab-content">
+  <div class="about-section">
+    <div class="about-card">
+      <h3 id="about-title">À PROPOS</h3>
+      <p id="about-text">RADIOS GUINÉE regroupe les meilleures stations de radio guinéennes. Écoutez en direct où que vous soyez.</p>
+    </div>
+    <div class="about-card">
+      <h3 id="pub-contact-title">PUBLICITÉ</h3>
+      <p id="pub-contact-text">Vous souhaitez annoncer votre produit ou service ? Contactez-nous pour des espaces publicitaires dans l'application.</p>
+    </div>
+    <div class="about-card">
+      <h3 id="lang-title-about">LANGUES</h3>
+      <p>Français • English • العربية • ߒߞߏ</p>
+    </div>
+    <div class="about-card" style="background: linear-gradient(135deg, #1a0a0a, #2d0808); border: 1px solid rgba(204,0,0,0.3);">
+      <h3 style="color: var(--jaune);" id="version-title">VERSION</h3>
+      <p>RADIOS GUINÉE v1.1 — 2026<br/>Développé en temps réel avec ❤️ pour la Guinée</p>
+    </div>
+  </div>
+</div>
+
+<div class="player-bar" id="playerBar">
+  <div class="player-info">
+    <div class="player-logo" id="playerLogo" style="background:#CC0000;"></div>
+    <div style="flex:1; min-width:0;">
+      <div class="player-name" id="playerName">—</div>
+      <div class="player-status">
+        <span class="live-dot" id="liveStatus">EN DIRECT</span>
+        <span class="loading-text" id="loadingText" style="display:none;">Chargement...</span>
+      </div>
+    </div>
+    <button class="ctrl-btn" onclick="closePLayer()" style="font-size:18px;">✕</button>
+  </div>
+  <div class="player-controls">
+    <span style="font-size:18px;">🔈</span>
+    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="80" oninput="setVolume(this.value)"/>
+    <span style="font-size:18px;">🔊</span>
+    <button class="main-play-btn" id="mainPlayBtn" onclick="togglePlay()">⏸️</button>
+  </div>
+</div>
+
+<nav class="bottom-nav">
+  <div class="nav-item active" onclick="switchTab('home', this)">
+    <span class="nav-icon">📻</span>
+    <span class="nav-label" id="nav-home">Radios</span>
+  </div>
+  <div class="nav-item" onclick="switchTab('favs', this)">
+    <span class="nav-icon">❤️</span>
+    <span class="nav-label" id="nav-favs">Favoris</span>
+  </div>
+  <div class="nav-item" onclick="switchTab('podcasts', this)">
+    <span class="nav-icon">🎙️</span>
+    <span class="nav-label" id="nav-podcasts">Podcasts</span>
+  </div>
+  <div class="nav-item" onclick="switchTab('about', this)">
+    <span class="nav-icon">ℹ️</span>
+    <span class="nav-label" id="nav-about">À propos</span>
+  </div>
+</nav>
+
+<div class="modal-overlay" id="langModal" onclick="closeLangModal(event)">
+  <div class="modal-sheet">
+    <div class="modal-title" id="lang-modal-title">Choisir la langue</div>
+    <div class="lang-option" onclick="setLanguage('fr')" id="lang-fr">
+      <span class="lang-flag">🇫🇷</span>
+      <div>
+        <div class="lang-name">Français</div>
+        <div class="lang-native">Langue française</div>
+      </div>
+    </div>
+    <div class="lang-option" onclick="setLanguage('en')" id="lang-en">
+      <span class="lang-flag">🇬🇧</span>
+      <div>
+        <div class="lang-name">English</div>
+        <div class="lang-native">English language</div>
+      </div>
+    </div>
+    <div class="lang-option" onclick="setLanguage('ar')" id="lang-ar">
+      <span class="lang-flag">🌙</span>
+      <div>
+        <div class="lang-name">العربية</div>
+        <div class="lang-native">اللغة العربية</div>
+      </div>
+    </div>
+    <div class="lang-option" onclick="setLanguage('nko')" id="lang-nko">
+      <span class="lang-flag">✨</span>
+      <div>
+        <div class="lang-name">ߒߞߏ</div>
+        <div class="lang-native">ߒߞߏ ߞߊ߲</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<audio id="audioPlayer" preload="none"></audio>
+
+<script>
+// =====================
+// TRADUCTIONS
+// =====================
+const i18n = {
+  fr: {
+    dir: "ltr", subtitle: "Écoutez en direct", search: "Rechercher une radio...", sectionRadios: "📻 Radios en direct",
+    navHome: "Radios", navFavs: "Favoris", navPodcasts: "Podcasts", navAbout: "À propos", langModal: "Choisir la langue",
+    favTitle: "Mes Favoris", emptyFav: "Aucun favori ajouté", podcastTitle: "Podcasts", emptyPod: "Podcasts bientôt disponibles",
+    aboutTitle: "À PROPOS", aboutText: "RADIOS GUINÉE regroupe les meilleures stations de radio guinéennes. Écoutez en direct où que vous soyez.",
+    pubContactTitle: "PUBLICITÉ", pubContactText: "Vous souhaitez annoncer votre produit ou service ? Contactez-nous pour des espaces publicitaires.",
+    versionTitle: "VERSION", pubText: "📢 Votre publicité ici — Contactez-nous pour annoncer", pubMidText: "Annoncez votre produit ici !",
+    pubCta: "Contacter", loading: "Chargement...", live: "EN DIRECT", catAll: "Toutes", catGen: "Généraliste",
+    catMus: "Musique", catInfo: "Info", catRel: "Religion", catReg: "Régionale", langTitle: "LANGUES"
+  },
+  en: {
+    dir: "ltr", subtitle: "Listen live", search: "Search a radio...", sectionRadios: "📻 Live Radios",
+    navHome: "Radios", navFavs: "Favorites", navPodcasts: "Podcasts", navAbout: "About", langModal: "Choose language",
+    favTitle: "My Favorites", emptyFav: "No favorites added", podcastTitle: "Podcasts", emptyPod: "Podcasts coming soon",
+    aboutTitle: "ABOUT", aboutText: "RADIOS GUINÉE brings together the best Guinean radio stations. Listen live wherever you are.",
+    pubContactTitle: "ADVERTISING", pubContactText: "Want to advertise your product? Contact us for advertising spaces.",
+    versionTitle: "VERSION", pubText: "📢 Your ad here — Contact us to advertise", pubMidText: "Advertise your product here!",
+    pubCta: "Contact", loading: "Loading...", live: "LIVE", catAll: "All", catGen: "General",
+    catMus: "Music", catInfo: "News", catRel: "Religion", catReg: "Regional", langTitle: "LANGUAGES"
+  },
+  ar: {
+    dir: "rtl", subtitle: "استمع مباشرة", search: "ابحث عن محطة إذاعية...", sectionRadios: "📻 الإذاعات المباشرة",
+    navHome: "الإذاعات", navFavs: "المفضلة", navPodcasts: "البودكاست", navAbout: "حول", langModal: "اختر اللغة",
+    favTitle: "المفضلة", emptyFav: "لا توجد محطات مفضلة", podcastTitle: "البودكاست", emptyPod: "البودكاست قريبًا",
+    aboutTitle: "حول التطبيق", aboutText: "راديوز غينيا يجمع أفضل المحطات الإذاعية الغينية. استمع مباشرة أينما كنت.",
+    pubContactTitle: "الإعلانات", pubContactText: "هل تريد الإعلان عن منتجك؟ تواصل معنا للحصول على مساحات إعلانية.",
+    versionTitle: "الإصدار", pubText: "📢 إعلانك هنا — تواصل معنا للإعلان", pubMidText: "أعلن عن منتجك هنا!",
+    pubCta: "تواصل", loading: "جارٍ التحميل...", live: "مباشر", catAll: "الكل", catGen: "عام",
+    catMus: "موسيقى", catInfo: "أخبار", catRel: "دين", catReg: "محلي", langTitle: "اللغات"
+  },
+  nko: {
+    dir: "rtl", subtitle: "ߘߍ߬ߡߊ߬ ߞߊ߲ߠߊ߬ ߛߓߍߟߌ", search: "ߞߊ߬ ߙߊߘߌߦߐ ߟߊ߫ ߦߋ߫...", sectionRadios: "📻 ߙߊߘߌߦߐ ߞߊ߲ߠߊ",
+    navHome: "ߙߊߘߌߦߐ", navFavs: "ߒߠߋ ߟߊ߫", navPodcasts: "ߝߐߟߌ", navAbout: "ߒߠߋ ߟߊ߫", langModal: "ߞߊ߲ ߟߊ߫ ߦߋ߫",
+    favTitle: "ߒ ߠߊ߫ ߙߊߘߌߦߐ", emptyFav: "ߙߊߘߌߦߐ ߛߌ߫ ߕߴߛߋ߫", podcastTitle: "ߝߐߟߌ", emptyPod: "ߝߐߟߌ ߘߌ߫ ߛߋ߫",
+    aboutTitle: "ߒߠߋ ߟߊ߫", aboutText: "RADIOS GUINÉE ߞߊ߬ ߙߊߘߌߦߐ ߓߘߍ߬ ߘߊ߫ ߖߌ߬ߣߍ߫ ߡߊ߬.",
+    pubContactTitle: "ߞߊ߬ߙߊ߲", pubContactText: "ߌ ߦߋ߫ ߞߊ߬ ߌ ߟߊ߫ ߞߊ߬ߙߊ߲ ߘߊ߫?", versionTitle: "ߞߐߜߍ",
+    pubText: "📢 ߌ ߟߊ߫ ߞߊ߬ߙߊ߲ ߦߋ߫ ߟߊ", pubMidText: "ߌ ߟߊ߫ ߞߊ߬ߙߊ߲ ߘߊ߫!", pubCta: "ߘߊ߬ߡߊ",
+    loading: "ߟߊ߬ߘߌ߬ߟߌ...", live: "ߞߊ߲ߠߊ", catAll: "ߒߞߏ", catGen: "ߝߊ߬ߙߊ߲",
+    catMus: "ߘߣߊ߬ߡߊ", catInfo: "ߞߐߜߍ", catRel: "ߌߛߌ߬ߟߊ߬ߡߊ", catReg: "ߝߊ߬ߛߏ", langTitle: "ߞߊ߲ ߘߐ߫"
+  }
+};
+
+// =====================
+// STATE & VARIABLES GLOBALLES
+// =====================
+let currentLang = 'fr';
+let currentRadio = null;
+let isPlaying = false;
+let favorites = JSON.parse(localStorage.getItem('rg_favs') || '[]');
+let currentCategory = 'all';
+let currentSearch = '';
+let radios = []; // Rempli dynamiquement par l'API
+
+const audio = document.getElementById('audioPlayer');
+
+// Couleurs de secours et emojis pour le design de vos cartes
+const designMap = {
+  "espace": { color: "#0066CC", emoji: "📡" },
+  "rtg": { color: "#006600", emoji: "📺" },
+  "sabari": { color: "#990099", emoji: "🎵" },
+  "sweet": { color: "#CC6600", emoji: "🍯" },
+  "bonheur": { color: "#009966", emoji: "🌙" },
+  "love": { color: "#CC0066", emoji: "💕" },
+  "littoral": { color: "#006699", emoji: "🌊" },
+  "fouta": { color: "#996600", emoji: "⛰️" },
+  "nostalgie": { color: "#663399", emoji: "🎶" },
+  "soleil": { color: "#CC9900", emoji: "☀️" },
+  "djoma": { color: "#336600", emoji: "🌿" },
+  "lynx": { color: "#CC3300", emoji: "🦁" }
+};
+
+// =====================
+// CHARGEMENT DYNAMIQUE DE L'API
+// =====================
+async function loadRadiosFromAPI() {
+  try {
+    // Appel sécurisé à Radio Browser pour récupérer uniquement la Guinée (GN)
+    const response = await fetch("https://de1.api.radio-browser.info/json/stations/bycountrycodeexact/gn");
+    const data = await response.json();
+    
+    // Formatage pour correspondre exactement à votre structure de données initiale
+    radios = data.map((station, index) => {
+      const nameLower = station.name.toLowerCase();
+      
+      // On tente de faire correspondre avec vos magnifiques designs prédéfinis
+      let matchedKey = "generaliste";
+      let color = "#2A2A2A";
+      let emoji = "📻";
+      
+      for (const key in designMap) {
+        if (nameLower.includes(key)) {
+          color = designMap[key].color;
+          emoji = designMap[key].emoji;
+          break;
+        }
+      }
+
+      // Catégorisation automatique simple
+      let category = "generaliste";
+      if (nameLower.includes("musique") || nameLower.includes("sweet") || nameLower.includes("love") || nameLower.includes("nostalgie")) category = "musique";
+      if (nameLower.includes("info") || nameLower.includes("rtg") || nameLower.includes("lynx")) category = "info";
+      if (nameLower.includes("bonheur") || nameLower.includes("islam") || nameLower.includes("coran")) category = "religion";
+      if (nameLower.includes("fouta") || nameLower.includes("djoma") || nameLower.includes("labé") || nameLower.includes("nzerekore")) category = "regional";
+
+      return {
+        id: station.stationuuid, // Identifiant unique de l'API
+        name: station.name,
+        freq: station.homepage && station.homepage.includes("FM") ? "Direct Web" : "FM / Stream",
+        desc: station.tags ? station.tags.split(',').slice(0,2).join(' ') : "Votre radio en direct",
+        category: category,
+        color: color,
+        stream: station.url_resolved, // Le vrai lien direct du flux audio HTTPS résolu !
+        favicon: station.favicon, // Utilisation du logo de l'API si disponible
+        emoji: emoji
+      };
+    });
+
+    renderRadios(getFilteredRadios(), 'radio-list');
+  } catch (error) {
+    console.error("Erreur de chargement de l'API Radio-Browser:", error);
+    document.getElementById('radio-list').innerHTML = `<div class="empty-state"><div class="empty-icon">⚠️</div><div class="empty-text">Erreur de connexion. Veuillez rafraîchir la page.</div></div>`;
+  }
+}
+
+// =====================
+// RENDER RADIOS
+// =====================
+function renderRadios(list, containerId) {
+  const container = document.getElementById(containerId);
+  if (!list.length) {
+    container.innerHTML = `<div class="empty-state"><div class="empty-icon">📻</div><div class="empty-text">${i18n[currentLang].emptyFav}</div></div>`;
+    return;
+  }
+  container.innerHTML = list.map(r => {
+    // Si l'API fournit un logo valide, on l'utilise, sinon on garde vos magnifiques boîtes de couleurs
+    const logoHtml = r.favicon && r.favicon.startsWith('http') 
+      ? `<div class="radio-logo"><img src="${r.favicon}" onerror="this.style.display='none';this.parentElement.innerHTML='${r.emoji}'"/></div>`
+      : `<div class="logo-placeholder" style="background:${r.color};">${r.emoji}<br/><span style="font-size:9px">${r.name.split(' ')[0]}</span></div>`;
+
+    return `
+      <div class="radio-card ${currentRadio && currentRadio.id === r.id ? 'playing' : ''}" id="card-${r.id}" onclick="playRadio('${r.id}')">
+        ${logoHtml}
+        <div class="radio-info">
+          <div class="radio-name">${r.name}</div>
+          <div class="radio-desc">${r.desc}</div>
+          <div class="radio-freq">${r.freq}</div>
+          <span class="radio-cat">${getCatLabel(r.category)}</span>
+        </div>
+        <div class="radio-actions">
+          <button class="play-btn ${currentRadio && currentRadio.id === r.id && isPlaying ? 'playing' : ''}" onclick="event.stopPropagation(); playRadio('${r.id}')">
+            ${currentRadio && currentRadio.id === r.id && isPlaying ? '⏸' : '▶'}
+          </button>
+          <button class="fav-btn ${favorites.includes(r.id) ? 'active' : ''}" onclick="event.stopPropagation(); toggleFav('${r.id}')">
+            ${favorites.includes(r.id) ? '❤️' : '🤍'}
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function getCatLabel(cat) {
+  const t = i18n[currentLang];
+  const map = { all: t.catAll, generaliste: t.catGen, musique: t.catMus, info: t.catInfo, religion: t.catRel, regional: t.catReg };
+  return map[cat] || cat;
+}
+
+function getFilteredRadios() {
+  return radios.filter(r => {
+    const matchCat = currentCategory === 'all' || r.category === currentCategory;
+    const matchSearch = !currentSearch || r.name.toLowerCase().includes(currentSearch.toLowerCase()) || r.desc.toLowerCase().includes(currentSearch.toLowerCase());
+    return matchCat && matchSearch;
+  });
+}
+
+function filterCategory(cat, btn) {
+  currentCategory = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderRadios(getFilteredRadios(), 'radio-list');
+}
+
+function filterRadios(val) {
+  currentSearch = val;
+  renderRadios(getFilteredRadios(), 'radio-list');
+}
+
+// =====================
+// CONTROLE DE LECTURE (PLAY)
+// =====================
+function playRadio(id) {
+  const radio = radios.find(r => r.id === id);
+  if (!radio) return;
+
+  if (currentRadio && currentRadio.id === id) {
+    togglePlay();
+    return;
+  }
+
+  currentRadio = radio;
+  isPlaying = true;
+
+  // Mise à jour de l'interface du lecteur du bas
+  document.getElementById('playerBar').classList.add('visible');
+  document.getElementById('playerName').textContent = radio.name;
+  
+  const playerLogoContainer = document.getElementById('playerLogo');
+  if(radio.favicon && radio.favicon.startsWith('http')) {
+    playerLogoContainer.innerHTML = `<img src="${radio.favicon}" style="width:100%;height:100%;border-radius:10px;object-fit:cover"/>`;
+  } else {
+    playerLogoContainer.innerHTML = radio.emoji;
+    playerLogoContainer.style.background = radio.color;
+  }
+
+  document.getElementById('mainPlayBtn').textContent = '⏸️';
+  document.getElementById('liveStatus').style.display = 'inline-flex';
+  document.getElementById('loadingText').style.display = 'inline';
+  document.getElementById('loadingText').textContent = i18n[currentLang].loading;
+
+  // Chargement et démarrage du flux audio
+  audio.src = radio.stream;
+  audio.volume = document.getElementById('volumeSlider').value / 100;
+  
+  audio.play().then(() => {
+    document.getElementById('loadingText').style.display = 'none';
+  }).catch((err) => {
+    console.error("Erreur de lecture : ", err);
+    document.getElementById('loadingText').textContent = '⚠️ Flux instable ou indisponible';
+  });
+
+  renderRadios(getFilteredRadios(), 'radio-list');
+  renderFavs();
+}
+
+function togglePlay() {
+  if (!currentRadio) return;
+  if (isPlaying) {
+    audio.pause();
+    isPlaying = false;
+    document.getElementById('mainPlayBtn').textContent = '▶️';
+  } else {
+    audio.play().then(() => {
+       document.getElementById('loadingText').style.display = 'none';
+    }).catch(() => {
+       document.getElementById('loadingText').textContent = '⚠️ Erreur de flux';
+    });
+    isPlaying = true;
+    document.getElementById('mainPlayBtn').textContent = '⏸️';
+  }
+  renderRadios(getFilteredRadios(), 'radio-list');
+  renderFavs();
+}
+
+function closePLayer() {
+  audio.pause();
+  audio.src = '';
+  currentRadio = null;
+  isPlaying = false;
+  document.getElementById('playerBar').classList.remove('visible');
+  renderRadios(getFilteredRadios(), 'radio-list');
+  renderFavs();
+}
+
+function setVolume(val) {
+  audio.volume = val / 100;
+}
+
+// =====================
+// FAVORITES
+// =====================
+function toggleFav(id) {
+  if (favorites.includes(id)) {
+    favorites = favorites.filter(f => f !== id);
+  } else {
+    favorites.push(id);
+  }
+  localStorage.setItem('rg_favs', JSON.stringify(favorites));
+  renderRadios(getFilteredRadios(), 'radio-list');
+  renderFavs();
+}
+
+function renderFavs() {
+  const favRadios = radios.filter(r => favorites.includes(r.id));
+  const container = document.getElementById('fav-list');
+  if (!favRadios.length) {
+    container.innerHTML = `<div class="empty-state"><div class="empty-icon">💔</div><div class="empty-text">${i18n[currentLang].emptyFav}</div></div>`;
+    return;
+  }
+  renderRadios(favRadios, 'fav-list');
+}
+
+// =====================
+// GESTION DES ONGLETS
+// =====================
+function switchTab(tab, navEl) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  navEl.classList.add('active');
+  if (tab === 'favs') renderFavs();
+}
+
+// =====================
+// SYSTEME DE TRADUCTION & MODAL
+// =====================
+function openLangModal() { document.getElementById('langModal').classList.add('open'); }
+function closeLangModal(e) { if (e.target === document.getElementById('langModal')) { document.getElementById('langModal').classList.remove('open'); } }
+
+function setLanguage(lang) {
+  currentLang = lang;
+  document.getElementById('langModal').classList.remove('open');
+  applyLanguage();
+  renderRadios(getFilteredRadios(), 'radio-list');
+  renderFavs();
+}
+
+function applyLanguage() {
+  const t = i18n[currentLang];
+  document.documentElement.dir = t.dir;
+  document.documentElement.lang = currentLang;
+
+  const flags = { fr: '🇫🇷 FR', en: '🇬🇧 EN', ar: '🌙 AR', nko: '✨ NKO' };
+  document.getElementById('lang-display').textContent = flags[currentLang];
+  document.getElementById('app-subtitle').textContent = t.subtitle;
+  document.getElementById('searchInput').placeholder = t.search;
+  document.getElementById('section-radios').textContent = t.sectionRadios;
+  document.getElementById('nav-home').textContent = t.navHome;
+  document.getElementById('nav-favs').textContent = t.navFavs;
+  document.getElementById('nav-podcasts').textContent = t.navPodcasts;
+  document.getElementById('nav-about').textContent = t.navAbout;
+  document.getElementById('lang-modal-title').textContent = t.langModal;
+  document.getElementById('fav-title').textContent = t.favTitle;
+  document.getElementById('podcast-title').textContent = t.podcastTitle;
+  document.getElementById('empty-pod-text').textContent = t.emptyPod;
+  document.getElementById('about-title').textContent = t.aboutTitle;
+  document.getElementById('about-text').textContent = t.aboutText;
+  document.getElementById('pub-contact-title').textContent = t.pubContactTitle;
+  document.getElementById('pub-contact-text').textContent = t.pubContactText;
+  document.getElementById('version-title').textContent = t.versionTitle;
+  document.getElementById('pub-text').textContent = t.pubText;
+  document.getElementById('pub-mid-text').textContent = t.pubMidText;
+  document.getElementById('pub-cta').textContent = t.pubCta;
+  document.getElementById('liveStatus').textContent = t.live;
+  document.getElementById('lang-title-about').textContent = t.langTitle;
+
+  const catBtns = document.querySelectorAll('.cat-btn');
+  const catKeys = ['catAll', 'catGen', 'catMus', 'catInfo', 'catRel', 'catReg'];
+  catBtns.forEach((btn, i) => { if (catKeys[i]) btn.textContent = t[catKeys[i]]; });
+
+  ['fr','en','ar','nko'].forEach(l => {
+    document.getElementById('lang-' + l).classList.toggle('selected', l === currentLang);
+  });
+}
+
+// =====================
+// INITIALISATION
+// =====================
+window.onload = function() {
+  applyLanguage();
+  loadRadiosFromAPI(); // On lance le chargement en direct de la base mondiale
+};
+</script>
+</body>
+</html>
