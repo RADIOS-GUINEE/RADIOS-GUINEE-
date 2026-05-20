@@ -13,4 +13,5 @@ Une application web moderne et intuitive pour écouter les principales stations 
 * JavaScript (Logique de lecture audio - *À venir*)
 
 ## 📱 Démo en ligne
-👉 [Tester l'application sur Netlify](https://a-d2c5bd.netlify.app)
+👉 [Tester l'application sur Netlify]<script src="script.js"></script>
+(https://a-d2c5bd.netlify.app)
