@@ -14,4 +14,5 @@ Une application web moderne et intuitive pour écouter les principales stations 
 
 ## 📱 Démo en ligne
 👉 [Tester l'application sur Netlify]## 📱 Démo en ligne
-👉 [Tester l'application sur Netlify](https://a-d2c5bd.netlify.app)
+👉 [Tester l'application sur Netlify](https://a-d2c5bd.netlify.app)<script src="script.js"></script>
+
